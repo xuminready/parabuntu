@@ -33,6 +33,7 @@ cleanup () {
 	umount ${root_mnt}/sys || true
 	umount ${root_mnt}/tmp || true
 	umount ${root_mnt}/dev/pts || true
+	umount ${root_mnt}/dev || true
 	umount ${root_mnt} || true
 	sync
 
@@ -130,6 +131,7 @@ echo Preparing ARM qemu bootstrap
 echo Bind mounting proc sys and pts in chroot
 mount --bind /proc    ${root_mnt}/proc
 mount --bind /sys     ${root_mnt}/sys
+mount --bind /dev     ${root_mnt}/dev
 mount --bind /dev/pts ${root_mnt}/dev/pts
 
 echo Mounting tmp in chroot
